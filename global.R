@@ -1,8 +1,8 @@
 ## Load packages
-library("dplyr")
-library("reactable")
-library("reticulate")
-library("shiny")
+suppressPackageStartupMessages(library("dplyr"))
+suppressPackageStartupMessages(library("reactable"))
+suppressPackageStartupMessages(library("reticulate"))
+suppressPackageStartupMessages(library("shiny"))
 
 ## Load synapse client
 synapse <- reticulate::import("synapseclient")
