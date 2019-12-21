@@ -41,7 +41,8 @@ server <- function(input, output, session) {
           ),
           description = colDef(
             name = "Key description",
-            aggregate = "unique"
+            aggregate = "unique",
+            filterable = TRUE
           ),
           columnType = colDef(
             name = "Type",
@@ -55,11 +56,13 @@ server <- function(input, output, session) {
           ),
           valueDescription = colDef(
             name = "Value description",
-            aggregate = reactable::JS("function(values, rows) { return '...' }")
+            aggregate = reactable::JS("function(values, rows) { return '...' }"),
+            filterable = TRUE
           ),
           source = colDef(
             name = "Source",
-            aggregate = reactable::JS("function(values, rows) { return '...' }")
+            aggregate = reactable::JS("function(values, rows) { return '...' }"),
+            filterable = TRUE
           ),
           module = colDef(
             name = "Module",
