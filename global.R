@@ -1,5 +1,6 @@
 ## Load packages
 suppressPackageStartupMessages(library("dplyr"))
+suppressPackageStartupMessages(library("purrr"))
 suppressPackageStartupMessages(library("reactable"))
 suppressPackageStartupMessages(library("reticulate"))
 suppressPackageStartupMessages(library("shiny"))
@@ -17,3 +18,16 @@ truncated_values <- JS("
     return joined.slice(0, 20) + '...'
   }
 ")
+
+get_synapse_table <- function(synID, syn) {
+  query_result <- syn$tableQuery(
+    glue::glue("select * from {synID}"),
+    includeRowIdAndRowVersion = FALSE
+  )
+  dat <- utils::read.csv(
+    query_result$filepath,
+    na.strings = "",
+    stringsAsFactors = FALSE
+  )
+  dat
+}

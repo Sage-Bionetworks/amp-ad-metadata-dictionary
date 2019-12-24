@@ -16,14 +16,10 @@ server <- function(input, output, session) {
     syn$login(sessionToken = input$cookie)
 
     ## Get annotations
-    query <- syn$tableQuery(
-      "SELECT * FROM syn10242922",
-      includeRowIdAndRowVersion = FALSE
-    )
-    annots <- read.csv(
-      query$filepath,
-      na.strings = "",
-      stringsAsFactors = FALSE
+    annots <- map_dfr(
+      c("syn10242922", "syn21459391"),
+      get_synapse_table,
+      syn = syn
     )
     annots <- select(annots, -maximumSize)
 
