@@ -5,14 +5,6 @@ ui <- function() {
         includeScript("www/readCookie.js")
       )
     ),
-    waiter::use_waiter(),
-    waiter::waiter_show_on_load(
-      html = tagList(
-        img(src = "loading.gif"),
-        h4("Connecting to Synapse...")
-      ),
-      color = "#424874"
-    ),
 
     titlePanel("AMP-AD Metadata Dictionary"),
 

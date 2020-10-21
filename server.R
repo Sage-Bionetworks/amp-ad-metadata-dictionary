@@ -13,43 +13,15 @@ server <- function(input, output, session) {
   })
 
   observeEvent(input$cookie, {
-    tryCatch({
-      syn$login(sessionToken = input$cookie)
-      ## Get annotations
-      annots <- map_dfr(
-        c("syn10242922", "syn21459391"),
-        get_synapse_table,
-        syn = syn
-      )
-      annots <- select(annots, -maximumSize)
+    syn$login(sessionToken = input$cookie)
 
-      ### update waiter loading screen once login successful
-      waiter::waiter_update(
-        html = tagList(
-          img(src = "synapse_logo.png", height = "120px"),
-          h3(sprintf("Welcome, %s!", syn$getUserProfile()$userName))
-        )
-      )
-      Sys.sleep(2)
-      waiter::waiter_hide()
-    }, error = function(err) {
-      Sys.sleep(2)
-      waiter::waiter_update(
-        html = tagList(
-          img(src = "synapse_logo.png", height = "120px"),
-          h3("Looks like you're not logged in!"),
-          span(
-            "Please ",
-            a(
-              "log in",
-              href = "https://www.synapse.org/#!LoginPlace:0",
-              target = "_blank"
-            ),
-            " to Synapse, then refresh this page."
-          )
-        )
-      )
-    })
+    ## Get annotations
+    annots <- map_dfr(
+      c("syn10242922", "syn21459391"),
+      get_synapse_table,
+      syn = syn
+    )
+    annots <- select(annots, -maximumSize)
 
     ## Create table to display
     output$annotations_table <- renderReactable({
