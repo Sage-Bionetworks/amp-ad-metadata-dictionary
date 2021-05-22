@@ -6,7 +6,7 @@ ui <- function() {
       )
     ),
 
-    titlePanel("AMP-AD Metadata Dictionary"),
+    titlePanel("AD Metadata Dictionary"),
 
     fluidRow(
       column(
