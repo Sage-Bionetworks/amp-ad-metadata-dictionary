@@ -43,11 +43,7 @@ server <- function(input, output, session) {
     req(is_logged_in)
 
     ## Get annotations
-    annots <- map_dfr(
-      c("syn10242922", "syn21459391"),
-      get_synapse_table,
-      syn = syn
-    )
+    annots <- get_synapse_table(synID = "syn10242922", syn = syn)
     annots <- select(annots, -maximumSize)
 
     ## Create table to display
