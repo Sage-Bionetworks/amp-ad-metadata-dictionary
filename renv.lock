@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "3.6.1",
+    "Version": "3.6.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -50,10 +50,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "2.0.0",
+      "Version": "3.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f41a3aa27b911750a6526b450d0b8ea4"
+      "Hash": "e3ae5d68dea0c55a12ea12a9fda02e61"
     },
     "crayon": {
       "Package": "crayon",
@@ -78,10 +78,10 @@
     },
     "ellipsis": {
       "Package": "ellipsis",
-      "Version": "0.3.0",
+      "Version": "0.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7067d90c1c780bfe80c0d497e3d7b49d"
+      "Hash": "bb0eec2fe32e88d9e2836c2f73ea2077"
     },
     "fansi": {
       "Package": "fansi",
@@ -211,10 +211,10 @@
     },
     "reactable": {
       "Package": "reactable",
-      "Version": "0.1.0",
+      "Version": "0.2.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b4da71126a5d50e16a319d4f83e29d2f"
+      "Hash": "ac1afe50d1c77470a72971a07fd146b1"
     },
     "renv": {
       "Package": "renv",
@@ -232,10 +232,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.2",
+      "Version": "0.4.11",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ff31d958a041593f58ba04fc637d90dd"
+      "Hash": "515f341d3affe0de9e4a7f762efb0456"
     },
     "shiny": {
       "Package": "shiny",
