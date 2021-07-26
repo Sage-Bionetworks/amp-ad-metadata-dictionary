@@ -53,6 +53,9 @@ server <- function(input, output, session) {
         groupBy = "key",
         searchable = TRUE,
         sortable = TRUE,
+        theme = reactable::reactableTheme(
+          searchInputStyle = list(width = "100%")
+        ),
         columns = list(
           key = colDef(
             name = "Key",
