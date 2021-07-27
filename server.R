@@ -16,7 +16,7 @@ server <- function(input, output, session) {
     is_logged_in <- FALSE
     ## Use authToken and handle error here if still not logged in
     tryCatch({
-      syn$login(authToken = input$cookie, silent = TRUE)
+      syn$login(sessionToken = input$cookie, silent = TRUE)
       is_logged_in <- TRUE
     },
     error = function(err) {
@@ -53,6 +53,9 @@ server <- function(input, output, session) {
         groupBy = "key",
         searchable = TRUE,
         sortable = TRUE,
+        theme = reactable::reactableTheme(
+          searchInputStyle = list(width = "100%")
+        ),
         columns = list(
           key = colDef(
             name = "Key",
