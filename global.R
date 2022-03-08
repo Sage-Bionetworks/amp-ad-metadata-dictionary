@@ -6,6 +6,7 @@ suppressPackageStartupMessages(library("reticulate"))
 suppressPackageStartupMessages(library("shiny"))
 
 ## Load synapse client
+reticulate::use_condaenv("synapse")
 synapse <- reticulate::import("synapseclient")
 
 ## Function to truncate display in table
