@@ -1,11 +1,11 @@
 server <- function(input, output, session) {
   syn <- synapse$Synapse()
-  syn$setEndpoints(
-    repoEndpoint='https://repo-staging.prod.sagebase.org/repo/v1',
-    authEndpoint='https://auth-staging.prod.sagebase.org/auth/v1',
-    fileHandleEndpoint='https://file-staging.prod.sagebase.org/file/v1',
-    portalEndpoint='https://staging.synapse.org/'
-  )
+  # syn$setEndpoints(
+  #   repoEndpoint='https://repo-staging.prod.sagebase.org/repo/v1',
+  #   authEndpoint='https://auth-staging.prod.sagebase.org/auth/v1',
+  #   fileHandleEndpoint='https://file-staging.prod.sagebase.org/file/v1',
+  #   portalEndpoint='https://staging.synapse.org/'
+  # )
 
   ## Get annotations
   annots <- get_synapse_table(synID = "syn10242922", syn = syn)
