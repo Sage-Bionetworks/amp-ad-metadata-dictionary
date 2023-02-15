@@ -4,10 +4,6 @@ suppressPackageStartupMessages(library("purrr"))
 suppressPackageStartupMessages(library("reactable"))
 suppressPackageStartupMessages(library("reticulate"))
 suppressPackageStartupMessages(library("shiny"))
-suppressPackageStartupMessages(library("httr"))
-suppressPackageStartupMessages(library("rjson"))
-
-
 
 if (Sys.getenv("R_CONFIG_ACTIVE") == "shinyapps") {
   venv_folder<-"virtual_env"
@@ -19,9 +15,7 @@ if (Sys.getenv("R_CONFIG_ACTIVE") == "shinyapps") {
 }
 
 ## Load synapse client
-# reticulate::use_condaenv("synapse")
 synapse <- reticulate::import("synapseclient")
-syn <- synapse$Synapse()
 
 ## Function to truncate display in table
 truncated_values <- JS("
