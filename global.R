@@ -15,6 +15,7 @@ if (Sys.getenv("R_CONFIG_ACTIVE") == "shinyapps") {
 }
 
 ## Load synapse client
+# reticulate::use_condaenv("synapse")
 synapse <- reticulate::import("synapseclient")
 
 ## Function to truncate display in table
