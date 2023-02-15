@@ -47,19 +47,7 @@ jobs:
           rsConnectUser <-"${{ secrets.RSCONNECT_USER }}"
           rsConnectToken <- "${{ secrets.RSCONNECT_TOKEN }}"
           rsConnectSecret <- "${{ secrets.RSCONNECT_SECRET }}"
-         
-          # create env file
-          config <- "OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}"
-          config <- c(config, "OAUTH_CLIENT_SECRET=${{ secrets.OAUTH_CLIENT_SECRET }}")
-          appUrl<- sprintf("https://%s.shinyapps.io/%s", rsConnectUser, appName)
-          config <- c(config, sprintf("APP_URL=%s", appUrl))
-         
-          envFileConn<-file(".Renviron")
-          tryCatch(
-             writeLines(config, envFileConn),
-             finally=close(envFileConn)
-          )  
- 
+
           rsconnect::setAccountInfo(rsConnectUser, rsConnectToken, rsConnectSecret)
           appFiles<-dir(all.files=TRUE, include.dirs=TRUE)
           rsconnect::deployApp(appName = appName, appFiles=appFiles)

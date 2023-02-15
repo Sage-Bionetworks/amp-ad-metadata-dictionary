@@ -10,7 +10,6 @@ annotations.
 - Enable workflows in the GitHub repository
 - Under [secrets](https://github.com/Sage-Bionetworks/amp-ad-metadata-dictionary/settings/secrets/actions) click 'New repository secret'
 - Enter secrets for `RSCONNECT_USER`, `RSCONNECT_TOKEN`, and `RSCONNECT_SECRET`, the values for which are saved in Sage's LastPass.
-- Enter secrets for `OAUTH_CLIENT_ID`, and `OAUTH_CLIENT_SECRET` the values for which are in Sage's LastPass under `Oauth client: Metadata Dictionary`.
 - Trigger the GitHub action.
 - Check out the app here: https://sagebio.shinyapps.io/amp-ad-metadata-dictionary-staging.
 - After verifying correctness, create a Git branch named release*, e.g., `release-1.0`.
