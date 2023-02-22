@@ -4,13 +4,13 @@
 name: shiny-deploy
 
 on:
-  push:
-    branches:
-      - master
-      - release*
+  pull_request:
+    types:
+      - closed
 
 jobs:
   shiny-deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
  
     steps:
