@@ -41,7 +41,7 @@ jobs:
           branch<-Sys.getenv("GITHUB_REF_NAME")
           repo<-Sys.getenv("GITHUB_REPOSITORY")
           appName<-strsplit(repo, "/")[[1]][2]
-          if (!startsWith(branch, "release")) {
+          if (!startsWith(branch, "prod")) {
              appName = paste(appName, "staging", sep="-")
           }
           rsConnectUser <-"${{ secrets.RSCONNECT_USER }}"
