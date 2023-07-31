@@ -1,6 +1,6 @@
 ui <- function() {
   fluidPage(
-    titlePanel("AD Metadata Dictionary"),
+    titlePanel("AD + EL Metadata Dictionary"),
 
     fluidRow(
       column(
