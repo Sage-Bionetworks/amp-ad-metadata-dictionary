@@ -2,21 +2,7 @@
 suppressPackageStartupMessages(library("dplyr"))
 suppressPackageStartupMessages(library("purrr"))
 suppressPackageStartupMessages(library("reactable"))
-suppressPackageStartupMessages(library("reticulate"))
 suppressPackageStartupMessages(library("shiny"))
-
-if (Sys.getenv("R_CONFIG_ACTIVE") == "shinyapps") {
-  venv_folder<-"virtual_env"
-  if (!file.exists(venv_folder)) {
-    reticulate::virtualenv_create(envname = venv_folder, python = '/usr/bin/python3')
-   	reticulate::virtualenv_install(venv_folder, packages = c('synapseclient', 'pandas'))
-   }
-   reticulate::use_virtualenv(venv_folder, required = T)
-}
-
-## Load synapse client
-# reticulate::use_condaenv("synapse")
-synapse <- reticulate::import("synapseclient")
 
 ## Function to truncate display in table
 truncated_values <- JS("
