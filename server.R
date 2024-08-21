@@ -1,15 +1,7 @@
 server <- function(input, output, session) {
-  syn <- synapse$Synapse()
-  # syn$setEndpoints(
-  #   repoEndpoint='https://repo-staging.prod.sagebase.org/repo/v1',
-  #   authEndpoint='https://auth-staging.prod.sagebase.org/auth/v1',
-  #   fileHandleEndpoint='https://file-staging.prod.sagebase.org/file/v1',
-  #   portalEndpoint='https://staging.synapse.org/'
-  # )
 
-  ## Get annotations
-  annots <- get_synapse_table(synID = "syn10242922", syn = syn)
-  annots <- select(annots, -maximumSize)
+  # Get data model csv and re-format for dictionary app
+  dict_table <- format_dict_table(data_model_url)
 
   ## Create table to display
   output$annotations_table <- renderReactable({
