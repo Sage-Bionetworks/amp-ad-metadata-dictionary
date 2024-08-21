@@ -13,7 +13,7 @@ ui <- function() {
       ),
       column(
         12,
-        reactableOutput("annotations_table")
+        reactableOutput("dictionary_table")
       )
     )
   )
