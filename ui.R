@@ -5,7 +5,7 @@ ui <- function() {
     fluidRow(
       column(
         8,
-        p("Explore AD metadata terms by key, value, or descriptions. ",
+        p("Explore AD metadata template columns by column name, value, or description. ",
           "You can use the large search bar to query the entire table, ",
           "the small search bars underneath the column names to query by ",
           "column, and the pagination at the bottom to flip through the table."
@@ -13,7 +13,7 @@ ui <- function() {
       ),
       column(
         12,
-        reactableOutput("annotations_table")
+        reactableOutput("dictionary_table")
       )
     )
   )
