@@ -4,6 +4,9 @@ suppressPackageStartupMessages(library("purrr"))
 suppressPackageStartupMessages(library("reactable"))
 suppressPackageStartupMessages(library("shiny"))
 
+## Global variables
+data_model_url <- "https://raw.githubusercontent.com/adknowledgeportal/data-models/main/AD.model.csv"
+
 ## Function to truncate display in table
 truncated_values <- JS("
   function(values, rows) {
