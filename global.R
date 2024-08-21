@@ -29,15 +29,44 @@ truncated_values <- JS("
   }
 ")
 
-get_synapse_table <- function(synID, syn) {
-  query_result <- syn$tableQuery(
-    glue::glue("select * from {synID}"),
-    includeRowIdAndRowVersion = FALSE
-  )
-  dat <- utils::read.csv(
-    query_result$filepath,
-    na.strings = "",
-    stringsAsFactors = FALSE
-  )
-  dat
+#' Format a Data Dictionary Table
+#'
+#' This function reads a schematic-formated data model csv from a raw github url and formats the data frame for use in the AD metadata dictionary shiny app.
+#'
+#' @param data_model_url A character string specifying the URL of the CSV file containing the data model.
+#' @return A tibble containing the formatted data dictionary with columns, descriptions, and associated attributes.
+#' @import dplyr
+#' @import tibble
+#' @importFrom utils read.csv
+#' @importFrom stats url
+#' @export
+format_dict_table <- function(data_model_url) {
+
+  data_model <- tibble::as_tibble(read.csv(url(data_model_url)))
+
+  col_attribs <- data_model |>
+    dplyr::filter(Parent == 'ManifestColumn') |>
+    dplyr::select(
+      Column = Attribute,
+      `Column Description` = Description,
+      Required,
+      `Column Type` = columnType,
+      `Data Model Module` = module
+    )
+
+  val_attribs <- data_model |>
+    dplyr::filter(Parent %in% col_attribs$Column) |>
+    dplyr::select(
+      Value = Attribute,
+      `Value Description` = Description,
+      Source,
+      Column = Parent
+    )
+
+  dict_table <- col_attribs |>
+    dplyr::left_join(val_attribs, relationship = "many-to-many") |>
+    dplyr::relocate(`Data Model Module`, .after = Source)
+
+  return(dict_table)
+
 }
