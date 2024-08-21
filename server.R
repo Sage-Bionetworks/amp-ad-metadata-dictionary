@@ -4,47 +4,47 @@ server <- function(input, output, session) {
   dict_table <- format_dict_table(data_model_url)
 
   ## Create table to display
-  output$annotations_table <- renderReactable({
+  output$dictionary_table <- renderReactable({
     reactable(
-      annots,
-      groupBy = "key",
+      dict_table,
+      groupBy = "Column",
       searchable = TRUE,
       sortable = TRUE,
       theme = reactable::reactableTheme(
         searchInputStyle = list(width = "100%")
       ),
       columns = list(
-        key = colDef(
-          name = "Key",
+        Column = colDef(
+          name = "Column",
           filterable = TRUE
         ),
-        description = colDef(
-          name = "Key description",
+        `Column Description` = colDef(
+          name = "Column description",
           aggregate = "unique",
           filterable = TRUE
         ),
-        columnType = colDef(
-          name = "Type",
+        `Column Type` = colDef(
+          name = "Column Type",
           aggregate = "unique",
           filterable = TRUE
         ),
-        value = colDef(
+        `Value` = colDef(
           name = "Value",
           aggregate = truncated_values,
           filterable = TRUE
         ),
-        valueDescription = colDef(
-          name = "Value description",
+        `Value Description` = colDef(
+          name = "Value Description",
           aggregate = reactable::JS("function(values, rows) { return '...' }"),
           filterable = TRUE
         ),
-        source = colDef(
+        Source = colDef(
           name = "Source",
           aggregate = reactable::JS("function(values, rows) { return '...' }"),
           filterable = TRUE
         ),
-        module = colDef(
-          name = "Module",
+        `Data Model Module` = colDef(
+          name = "Data Model Module",
           aggregate = "unique",
           filterable = TRUE
         )
