@@ -25,13 +25,12 @@ truncated_values <- JS("
 #' @param data_model_url A character string specifying the URL of the CSV file containing the data model.
 #' @return A tibble containing the formatted data dictionary with columns, descriptions, and associated attributes.
 #' @import dplyr
-#' @import tibble
 #' @importFrom utils read.csv
 #' @importFrom stats url
 #' @export
 format_dict_table <- function(data_model_url) {
 
-  data_model <- tibble::as_tibble(read.csv(url(data_model_url)))
+  data_model <- read.csv(url(data_model_url))
 
   col_attribs <- data_model |>
     dplyr::filter(Parent == 'ManifestColumn') |>
