@@ -1,0 +1,5 @@
+renv/
+.git/
+.Rproj.user/
+*.Rproj
+*.log
