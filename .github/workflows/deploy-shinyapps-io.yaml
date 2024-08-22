@@ -43,7 +43,7 @@ jobs:
           rsConnectToken <- "${{ secrets.RSCONNECT_TOKEN }}"
           rsConnectSecret <- "${{ secrets.RSCONNECT_SECRET }}"
           rsconnect::setAccountInfo(rsConnectUser, rsConnectToken, rsConnectSecret)
-          appFiles<-dir(all.files=TRUE, include.dirs=TRUE)
-          rsconnect::deployApp(appName = appName, appFiles=appFiles, forceUpdate = TRUE)
+          # appDir default is current working directory
+          rsconnect::deployApp(appName = appName, forceUpdate = TRUE)
           # important NOT to run this step as sudo, otherwise env var's will be missing
         shell: Rscript {0}
