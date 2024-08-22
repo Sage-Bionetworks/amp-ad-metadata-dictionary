@@ -3,6 +3,7 @@
 
 name: shinyapps-io-deploy
 
+# run when PR is merged OR via workflow dispatch
 on:
   pull_request:
     types:
