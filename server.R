@@ -1,58 +1,50 @@
 server <- function(input, output, session) {
-  syn <- synapse$Synapse()
-  # syn$setEndpoints(
-  #   repoEndpoint='https://repo-staging.prod.sagebase.org/repo/v1',
-  #   authEndpoint='https://auth-staging.prod.sagebase.org/auth/v1',
-  #   fileHandleEndpoint='https://file-staging.prod.sagebase.org/file/v1',
-  #   portalEndpoint='https://staging.synapse.org/'
-  # )
 
-  ## Get annotations
-  annots <- get_synapse_table(synID = "syn10242922", syn = syn)
-  annots <- select(annots, -maximumSize)
+  # Get data model csv and re-format for dictionary app
+  dict_table <- format_dict_table(data_model_url)
 
   ## Create table to display
-  output$annotations_table <- renderReactable({
+  output$dictionary_table <- renderReactable({
     reactable(
-      annots,
-      groupBy = "key",
+      dict_table,
+      groupBy = "Column",
       searchable = TRUE,
       sortable = TRUE,
       theme = reactable::reactableTheme(
         searchInputStyle = list(width = "100%")
       ),
       columns = list(
-        key = colDef(
-          name = "Key",
+        Column = colDef(
+          name = "Column",
           filterable = TRUE
         ),
-        description = colDef(
-          name = "Key description",
+        `Column Description` = colDef(
+          name = "Column Description",
           aggregate = "unique",
           filterable = TRUE
         ),
-        columnType = colDef(
-          name = "Type",
+        `Column Type` = colDef(
+          name = "Column Type",
           aggregate = "unique",
           filterable = TRUE
         ),
-        value = colDef(
+        `Value` = colDef(
           name = "Value",
           aggregate = truncated_values,
           filterable = TRUE
         ),
-        valueDescription = colDef(
-          name = "Value description",
+        `Value Description` = colDef(
+          name = "Value Description",
           aggregate = reactable::JS("function(values, rows) { return '...' }"),
           filterable = TRUE
         ),
-        source = colDef(
+        Source = colDef(
           name = "Source",
           aggregate = reactable::JS("function(values, rows) { return '...' }"),
           filterable = TRUE
         ),
-        module = colDef(
-          name = "Module",
+        `Data Model Module` = colDef(
+          name = "Data Model Module",
           aggregate = "unique",
           filterable = TRUE
         )
