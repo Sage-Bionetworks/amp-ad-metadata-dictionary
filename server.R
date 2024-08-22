@@ -1,7 +1,10 @@
 server <- function(input, output, session) {
 
   # Get data model csv and re-format for dictionary app
-  dict_table <- format_dict_table(data_model_url)
+  # use reactive expression to get latest version of data model
+  dict_table <- reactive({
+    format_dict_table(data_model_url)
+  })
 
   ## Create table to display
   output$dictionary_table <- renderReactable({
