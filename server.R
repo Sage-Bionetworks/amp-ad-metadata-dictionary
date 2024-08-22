@@ -19,7 +19,7 @@ server <- function(input, output, session) {
           filterable = TRUE
         ),
         `Column Description` = colDef(
-          name = "Column description",
+          name = "Column Description",
           aggregate = "unique",
           filterable = TRUE
         ),
