@@ -1,19 +1,26 @@
 # AMP-AD Metadata Dictionary
 
-Hosts the dictionary used for metadata in AMP-AD, which is composed of the
-[synapseAnnotations](https://github.com/Sage-Bionetworks/synapseAnnotations/) as
-well as some custom values that are used only in metadata files, and not as
-annotations.
+Hosts the dictionary used for metadata in AMP-AD, which is a ReacTable object that displays the production [ADKP data model](https://github.com/adknowledgeportal/data-models/blob/main/AD.model.csv). 
+
+The dictionary app displays all attributes used as manifest columns, and all valid values for those columns. It does not display manifest attributes (where Parent = 'ManifestTemplate'). 
+
+As of August 2024, this app no longer interacts with Synapse since it is pulling from the ADKP data model used for schematic and DCA. The recitulate and synapsclient dependencies have been removed.
 
 ### To deploy to ShinyApps.io:
 
-- Enable workflows in the GitHub repository
-- Under [secrets](https://github.com/Sage-Bionetworks/amp-ad-metadata-dictionary/settings/secrets/actions) click 'New repository secret'
-- Enter secrets for `RSCONNECT_USER`, `RSCONNECT_TOKEN`, and `RSCONNECT_SECRET`, the values for which are saved in Sage's LastPass.
-- Push to new branch on Github
-- Create pull request with at least one reviewer to master branch
-- Upon merge of pull request, the app will deploy to staging.
+The shinyapps.io deployment workflow is `deploy-shinyapps-io.yaml`. 
+- This uses repository secrets to deploy the app to ShinyApps.io via rsconnect: `RSCONNECT_USER`, `RSCONNECT_TOKEN`, and `RSCONNECT_SECRET`. Values for these are saved in Sage's LastPass.
+- This workflow runs when a PR is approved and merged into, OR via manual workflow dispatch
+- Upon completion of the workflow, the app will deploy to staging.
 Check out the app here: https://sagebio.shinyapps.io/amp-ad-metadata-dictionary-staging.
-- After verifying correctness, create pull request with at least one reviewer to prod branch
+- After verifying correctness on `main`, create pull request with at least one reviewer to `prod` branch
 - Upon merge of pull request, the app will deploy to production.
-- The app' will become available at https://sagebio.shinyapps.io/amp-ad-metadata-dictionary
+- The production app will become available at https://sagebio.shinyapps.io/amp-ad-metadata-dictionary
+- This app is embedded as an iframe on the Synapse wiki here: https://www.synapse.org/Synapse:syn25878249
+
+### To deploy to Github Pages via shinylive:
+
+The shinylive deployment workflow is `deploy-shinylive.yaml`. 
+- This uses the `shinylive` package to build a static site that is run entirely in the browser (https://posit-dev.github.io/r-shinylive/), and deploy that site to Github pages
+- This workflow runs on a push to `main` or via workflow dispatch
+- ⚠️ right now this site loads very, very slowly. The static site will not replace the shinyapps.io deployment as our user-facing version unless we can figure out how to speed it up.  
