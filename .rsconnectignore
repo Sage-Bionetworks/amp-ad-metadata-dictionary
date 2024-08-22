@@ -4,3 +4,4 @@ renv/
 .Rproj.user/
 *.Rproj
 *.log
+.Rprofile
