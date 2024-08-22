@@ -1,12 +1,16 @@
 server <- function(input, output, session) {
 
   # Get data model csv and re-format for dictionary app
-  dict_table <- format_dict_table(data_model_url)
+  # use reactive expression to get latest version of data model
+  dict_table <- reactive({
+    df <- format_dict_table(data_model_url)
+    as.data.frame(df)  # Ensure the result is a data frame
+  })
 
   ## Create table to display
   output$dictionary_table <- renderReactable({
     reactable(
-      dict_table,
+      dict_table(),
       groupBy = "Column",
       searchable = TRUE,
       sortable = TRUE,
