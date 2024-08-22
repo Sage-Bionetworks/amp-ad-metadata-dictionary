@@ -4,6 +4,8 @@ Hosts the dictionary used for metadata in AMP-AD, which is a ReacTable object th
 
 The dictionary app displays all attributes used as manifest columns, and all valid values for those columns. It does not display manifest attributes (where Parent = 'ManifestTemplate'). 
 
+As of August 2024, this app no longer interacts with Synapse since it is pulling from the ADKP data model used for schematic and DCA. The recitulate and synapsclient dependencies have been removed.
+
 ### To deploy to ShinyApps.io:
 
 The shinyapps.io deployment workflow is `deploy-shinyapps-io.yaml`. 
