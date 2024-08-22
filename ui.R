@@ -5,10 +5,10 @@ ui <- function() {
     fluidRow(
       column(
         8,
-        p("Explore AD metadata template columns by column name, value, or description. ",
-          "You can use the large search bar to query the entire table, ",
-          "the small search bars underneath the column names to query by ",
-          "column, and the pagination at the bottom to flip through the table."
+        p("Explore AD metadata template columns by name, value, or description. ",
+          "You can use the large search bar at the top to query the entire dictionary, ",
+          "the small search bars underneath the dictionary column names to query by ",
+          "dictionary column, and the pagination at the bottom to flip through the table."
         )
       ),
       column(
