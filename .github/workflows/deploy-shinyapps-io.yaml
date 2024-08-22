@@ -23,12 +23,6 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: disable renv
-        run: |
-          rm .Rprofile
-          rm renv.lock
-          rm -rf renv
-
       - name: Install R packages
         run: |
           # The binary package distributions from R Studio dramatically speed up installation time
