@@ -30,7 +30,7 @@ truncated_values <- JS("
 #' @export
 format_dict_table <- function(data_model_url) {
 
-  data_model <- read.csv(url(data_model_url))
+  data_model <- reactive(read.csv(url(data_model_url)))
 
   col_attribs <- data_model |>
     dplyr::filter(Parent == 'ManifestColumn') |>
