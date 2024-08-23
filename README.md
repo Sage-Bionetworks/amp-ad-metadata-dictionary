@@ -6,6 +6,8 @@ The dictionary app displays all attributes used as manifest columns, and all val
 
 As of August 2024, this app no longer interacts with Synapse since it is pulling from the ADKP data model used for schematic and DCA. The recitulate and synapsclient dependencies have been removed.
 
+It may take a few minutes (five-ish?) and a browser refresh for changes merged into the AD.model.csv file on the main akdp data model repo branch to appear in the app, but they should display without needing to redeploy the app. 
+
 ### To deploy to ShinyApps.io:
 
 The shinyapps.io deployment workflow is `deploy-shinyapps-io.yaml`. 
